@@ -22,7 +22,7 @@ Key Technical Features:
 
 FOLDER STRUCTURE 
 -----------------------------------------------------------------------
-* /sql-scripts: Contains your flapping_analyzer.sql.
+* /sql-scripts: Contains your NetFlutter.sql.
 * /splunk-configs: Contains your .conf files or sample SPL queries.
 * /docs: A screenshot of a DBeaver ER diagram.
 
