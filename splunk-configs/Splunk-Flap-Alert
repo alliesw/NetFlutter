@@ -1,0 +1,8 @@
+Splunk alerts to trigger a webhook into our ticketing system when a device's "Flap Score" exceeds 10 transitions per hour.
+Splunk Search (SPL):
+index=network_logs sourcetype=cisco_ios 
+| streamstats current=f last(status) as prev_status by device_id 
+| where status != prev_status 
+| stats count as flap_count by device_id, _time span=1h 
+| where flap_count > 5
+| lookup snowflake_dna_inventory device_id OUTPUT equipment_model, region
