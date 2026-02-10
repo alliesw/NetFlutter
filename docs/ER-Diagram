@@ -1,0 +1,31 @@
+• ER Diagram: A visual of how my raw logs link to the DNA inventory.
+
+  erDiagram
+    %% Entities
+    LOG_SOURCE {
+        string source_id PK
+        string ip_address
+        string hostname
+        string log_type
+    }
+    RAW_LOGS {
+        string log_id PK
+        timestamp event_time
+        string raw_message
+        string src_ip
+        string dest_ip
+        string device_id FK
+    }
+    DNA_ASSET_INVENTORY {
+        string asset_id PK
+        string mgmt_ip UK
+        string hostname
+        string device_type
+        string mac_address
+        string site_location
+    }
+
+    %% Relationships
+    LOG_SOURCE ||--o{ RAW_LOGS : "generates"
+    DNA_ASSET_INVENTORY ||--o{ RAW_LOGS : "correlates to"
+    LOG_SOURCE ||--o| DNA_ASSET_INVENTORY : "matches"
